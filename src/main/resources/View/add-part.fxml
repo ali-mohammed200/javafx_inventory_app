@@ -54,7 +54,7 @@
             <TextField fx:id="minInput" layoutX="258.0" layoutY="146.0" prefHeight="25.0" prefWidth="109.0" />
          </children>
       </Pane>
-      <Button fx:id="saveButton" layoutX="229.0" layoutY="332.0" mnemonicParsing="false" text="Save" />
+      <Button fx:id="saveButton" layoutX="229.0" layoutY="332.0" mnemonicParsing="false" onAction="#onSave" text="Save" />
       <Button fx:id="cancelButton" layoutX="341.0" layoutY="332.0" mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
    </children>
 </AnchorPane>

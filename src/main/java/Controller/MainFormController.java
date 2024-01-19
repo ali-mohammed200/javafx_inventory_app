@@ -2,6 +2,10 @@ package Controller;
 
 import Model.*;
 import com.c482_inventory_system.c482_pa.MainApplication;
+import javafx.animation.Animation;
+import javafx.animation.PauseTransition;
+import javafx.animation.SequentialTransition;
+import javafx.animation.Transition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -101,62 +106,82 @@ public class MainFormController implements Initializable {
     @FXML
     protected void onDeletePart(ActionEvent event) {
         Part part = (Part) tablePart.getSelectionModel().getSelectedItem();
-        if (part != null){
+        if (part != null) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Delete Part");
             alert.setHeaderText("Confirm deletion");
             alert.setContentText("Are you sure you want to delete " + part.getName() + "?");
-            if(alert.showAndWait().get() == ButtonType.OK){
+            if (alert.showAndWait().get() == ButtonType.OK) {
                 Inventory.deletePart(part);
                 tablePart.setItems(Inventory.getAllParts());
                 System.out.println(Inventory.getAllProducts());
             } else {
-                partsWarning.setText("Not deleted");
+                setWarningLabel("Not Deleted", partsWarning);
             }
         } else {
-            partsWarning.setText("No part selected");
+            setWarningLabel("No part selected", partsWarning);
         }
+    }
+
+    @FXML
+    protected void setWarningLabel(String warning, Label label) {
+        label.setText(warning);
+        Animation animation = new Transition() {
+            {
+                setCycleDuration(Duration.millis(2000));
+            }
+
+            protected void interpolate(double frac) {
+                if ( ( (int) ((float)frac * 100) ) == 100){
+                    label.setText("");
+                } else {
+                   label.setText(warning);
+                }
+            }
+
+        };
+        animation.play();
     }
 
     @FXML
     protected void onDeleteProduct(ActionEvent event) {
         Product product = (Product) tableProduct.getSelectionModel().getSelectedItem();
-        if (product != null){
+        if (product != null) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Delete Product");
             alert.setHeaderText("Confirm deletion");
             alert.setContentText("Are you sure you want to delete " + product.getName() + "?");
-            if(alert.showAndWait().get() == ButtonType.OK){
+            if (alert.showAndWait().get() == ButtonType.OK) {
                 Inventory.deleteProduct(product);
                 tableProduct.setItems(Inventory.getAllProducts());
                 System.out.println(Inventory.getAllProducts());
             } else {
-                productsWarning.setText("Not deleted");
+                setWarningLabel("Not Deleted", productsWarning);
             }
         } else {
-            productsWarning.setText("No product selected");
+            setWarningLabel("No product selected", productsWarning);
         }
     }
 
     @FXML
     protected void onSearchPart(KeyEvent event) {
         String searchTerm = searchBarPart.getText();
-        boolean isNumeric = searchTerm.chars().allMatch( Character::isDigit );
-        if (isNumeric && searchTerm != ""){
+        boolean isNumeric = searchTerm.chars().allMatch(Character::isDigit);
+        if (isNumeric && searchTerm != "") {
             Integer id = Integer.parseInt(searchTerm);
             Part part = Inventory.lookupPart(id);
             if (part != null) {
                 searchTerm = part.getName();
             }
         }
-            tablePart.setItems(Inventory.lookupPart(searchTerm));
+        tablePart.setItems(Inventory.lookupPart(searchTerm));
     }
 
     @FXML
     protected void onSearchProduct(KeyEvent event) {
         String searchTerm = searchBarProduct.getText();
-        boolean isNumeric = searchTerm.chars().allMatch( Character::isDigit );
-        if (isNumeric && searchTerm != ""){
+        boolean isNumeric = searchTerm.chars().allMatch(Character::isDigit);
+        if (isNumeric && searchTerm != "") {
             Integer id = Integer.parseInt(searchTerm);
             Product product = Inventory.lookupProduct(id);
             if (product != null) {
