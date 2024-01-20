@@ -30,8 +30,6 @@ public class AddPartController implements Initializable {
     @FXML
     private RadioButton osButton;
     @FXML
-    private TextField idInput;
-    @FXML
     private TextField nameInput;
     @FXML
     private TextField invInput;

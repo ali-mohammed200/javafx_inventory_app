@@ -35,7 +35,7 @@
                 <Label text="Inv" />
                 <Label text="Price/Cost" />
                 <Label text="Max" />
-                <Label text="Machine ID" />
+                <Label fx:id="customLabel" text="Machine ID"/>
               </children>
             </VBox>
             <VBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="189.0" prefWidth="130.0" spacing="7.0">
@@ -54,7 +54,9 @@
         <TextField fx:id="minInput" layoutX="258.0" layoutY="146.0" prefHeight="25.0" prefWidth="109.0" />
       </children>
     </Pane>
-    <Button fx:id="saveButton" layoutX="229.0" layoutY="332.0" mnemonicParsing="false" text="Save" />
+    <Button fx:id="saveButton" layoutX="229.0" layoutY="332.0" mnemonicParsing="false" onAction="#onSave" text="Save" />
     <Button fx:id="cancelButton" layoutX="341.0" layoutY="332.0" mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
+    <Label fx:id="warningLabel" layoutX="14.0" layoutY="287.0" prefHeight="94.0" prefWidth="195.0"
+           textAlignment="JUSTIFY" textOverrun="CLIP" wrapText="true"/>
   </children>
 </AnchorPane>

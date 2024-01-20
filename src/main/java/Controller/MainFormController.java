@@ -82,14 +82,21 @@ public class MainFormController implements Initializable {
 
     @FXML
     protected void onModifyPart(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/View/modify-part.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("Modify Part");
-        stage.setX(0);
-        stage.setY(0);
-        stage.setScene(scene);
-        stage.show();
+        Part part = (Part) tablePart.getSelectionModel().getSelectedItem();
+        if (part != null) {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/View/modify-part.fxml"));
+            ((ModifyPartController) fxmlLoader.getController()).setSelectedPart(part);
+
+            Scene scene = new Scene(fxmlLoader.load());
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("Modify Part");
+            stage.setX(0);
+            stage.setY(0);
+            stage.setScene(scene);
+            stage.show();
+        } else {
+            setWarningLabel("No part selected to modify. ", partsWarning);
+        }
     }
 
     @FXML
@@ -132,10 +139,10 @@ public class MainFormController implements Initializable {
             }
 
             protected void interpolate(double frac) {
-                if ( ( (int) ((float)frac * 100) ) == 100){
+                if (((int) ((float) frac * 100)) == 100) {
                     label.setText("");
                 } else {
-                   label.setText(warning);
+                    label.setText(warning);
                 }
             }
 
