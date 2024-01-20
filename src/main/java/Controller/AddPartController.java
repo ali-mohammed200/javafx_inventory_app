@@ -45,31 +45,75 @@ public class AddPartController implements Initializable {
     private Label customLabel;
     @FXML
     private TextField minInput;
+    @FXML
+    private Label warningLabel;
     private ToggleGroup group = new ToggleGroup();
 
+
     @FXML
-    protected void onSave(ActionEvent event) {
+    protected void onSave(ActionEvent event) throws IOException {
+        String warning = "";
         String name = nameInput.getText();
-        int inv = Integer.parseInt(invInput.getText());
-        double price = Double.parseDouble(priceInput.getText());
-        int max = Integer.parseInt(maxInput.getText());
-        int min = Integer.parseInt(minInput.getText());
+        if (name == "") {
+            warning += "Name is empty. ";
+        }
+        int inv = 0;
+        try {
+            inv = Integer.parseInt(invInput.getText());
+        } catch (NumberFormatException e) {
+            warning += "Inv is not a integer. ";
+        }
+
+        double price = 0;
+        try {
+            price = Double.parseDouble(priceInput.getText());
+        } catch (NumberFormatException e) {
+            warning += "Price is not a double. ";
+        }
+
+        int max = 0;
+        try {
+            max = Integer.parseInt(maxInput.getText());
+        } catch (NumberFormatException e) {
+            warning += "Max is not an integer. ";
+        }
+
+        int min = 0;
+        try {
+            min = Integer.parseInt(minInput.getText());
+        } catch (NumberFormatException e) {
+            warning += "Min is not an integer. ";
+        }
+
+        if (min > max) {
+            warning += "Min must be less than max. ";
+        }
+        if (inv > max || inv < min) {
+            warning += "Inv must be between min and max. ";
+        }
+
+
         String custom = customInput.getText();
         int id = new Random().nextInt(1000);
         Part part = null;
         if (ihButton.isSelected()) {
-            int machineId = Integer.parseInt(custom);
-            part = new InHouse(id, name, price, inv, max, min, machineId);
+            int machineId = 0;
+            try {
+                machineId = Integer.parseInt(custom);
+                part = new InHouse(id, name, price, inv, max, min, machineId);
+            } catch (NumberFormatException e) {
+                warning += "Machine ID is not an integer. ";
+            }
         } else if (osButton.isSelected()) {
             part = new Outsourced(id, name, price, inv, max, min, custom);
         }
-        Inventory.addPart(part);
-//        Part part = new Outsourced(1, "Outsourced Part Tire", 20.00, 20, 1, 5, "FOX");
-//        pr.addAssociatedPart(part);
-//        Part part2 = new InHouse(2, "InHouse Part Bell", 10.00, 27, 1, 5, 2);
 
-
-        System.out.print(ihButton.isSelected());
+        if (warning.length() > 0) {
+            warningLabel.setText("Exception:\n" + warning);
+        } else {
+            Inventory.addPart(part);
+            onCancel(event); //close add parts window
+        }
     }
 
     @FXML
@@ -86,6 +130,8 @@ public class AddPartController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ihButton.setToggleGroup(group);
         osButton.setToggleGroup(group);
+
+        ihButton.setSelected(true);
         group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
