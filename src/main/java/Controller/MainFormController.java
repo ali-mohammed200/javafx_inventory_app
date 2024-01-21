@@ -210,6 +210,9 @@ public class MainFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        tablePart.setPlaceholder(new Label("No parts to show"));
+        tableProduct.setPlaceholder(new Label("No products to show"));
+
         tablePart.setItems(Inventory.getAllParts());
         tableProduct.setItems(Inventory.getAllProducts());
 

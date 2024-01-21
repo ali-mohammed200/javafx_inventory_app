@@ -67,7 +67,8 @@
                                    <TableColumn fx:id="cPartPrice" prefWidth="127.0" text="Price / Cost per Unit" />
                                </columns>
                            </TableView>
-                           <Button fx:id="addPartButton" layoutX="321.0" layoutY="255.0" mnemonicParsing="false" text="Add" />
+                           <Label fx:id="partsWarning" layoutX="23.0" layoutY="258.0" />
+                           <Button fx:id="addPartButton" layoutX="321.0" layoutY="255.0" mnemonicParsing="false" onAction="#onAddAssociatedPart" text="Add" />
                            <TextField fx:id="searchBarPart" layoutX="217.0" layoutY="10.0" onKeyTyped="#onSearchPart" prefHeight="25.0" prefWidth="168.0" promptText="Search Part ID or Name" />
                        </children>
                    </Pane>
@@ -81,13 +82,15 @@
                               <TableColumn fx:id="aPartPrice" prefWidth="127.0" text="Price / Cost per Unit" />
                            </columns>
                         </TableView>
-                        <Button fx:id="removeAssocPart" layoutX="227.0" layoutY="212.0" mnemonicParsing="false" text="Remove Associated Part" />
+                         <Label fx:id="assocPartsWarning" layoutX="23.0" layoutY="258.0" />
+                        <Button fx:id="removeAssocPart" layoutX="227.0" layoutY="212.0" mnemonicParsing="false" onAction="#onRemoveAssociatedPart" text="Remove Associated Part" />
                      </children>
                   </Pane>
-                  <Button fx:id="saveButton" layoutX="228.0" layoutY="551.0" mnemonicParsing="false" text="Save" />
+                  <Button fx:id="saveButton" layoutX="228.0" layoutY="551.0" mnemonicParsing="false" onAction="#onSave" text="Save" />
                   <Button fx:id="cancelButton" layoutX="319.0" layoutY="551.0" mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
                </children>
             </Pane>
+             <Label fx:id="warningLabel" layoutX="40.0" layoutY="339.0" prefHeight="94.0" prefWidth="195.0" textAlignment="JUSTIFY" textOverrun="CLIP" wrapText="true" />
          </children>
       </Pane>
    </children>
