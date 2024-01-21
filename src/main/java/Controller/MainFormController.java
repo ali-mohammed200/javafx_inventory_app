@@ -3,8 +3,6 @@ package Controller;
 import Model.*;
 import com.c482_inventory_system.c482_pa.MainApplication;
 import javafx.animation.Animation;
-import javafx.animation.PauseTransition;
-import javafx.animation.SequentialTransition;
 import javafx.animation.Transition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -86,14 +84,13 @@ public class MainFormController implements Initializable {
         Integer selectedIndex = tablePart.getSelectionModel().getSelectedIndex();
         if (part != null) {
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/View/modify-part.fxml"));
-            ModifyPartController modifyPartController = ((ModifyPartController) fxmlLoader.getController());
-            modifyPartController.setSelectedPart(part);
-            modifyPartController.setPartIndex(selectedIndex);
+            ModifyPartController.setSelectedPart(part);
+            ModifyPartController.setPartIndex(selectedIndex);
 
             Scene scene = new Scene(fxmlLoader.load());
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle("Modify Part");
-            stage.setX(0);
+//            stage.setX(0);
             stage.setY(0);
             stage.setScene(scene);
             stage.show();
@@ -104,12 +101,23 @@ public class MainFormController implements Initializable {
 
     @FXML
     protected void onModifyProduct(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/View/modify-product.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("Modify Product");
-        stage.setScene(scene);
-        stage.show();
+        Product selectedProduct = (Product) tableProduct.getSelectionModel().getSelectedItem();
+        Integer selectedIndex = tableProduct.getSelectionModel().getSelectedIndex();
+        if (selectedProduct != null) {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/View/modify-product.fxml"));
+            ModifyProductController.setSelectedProduct(selectedProduct);
+            ModifyProductController.setProductIndex(selectedIndex);
+
+            Scene scene = new Scene(fxmlLoader.load());
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("Modify Product");
+            stage.setY(0);
+            stage.setScene(scene);
+            stage.show();
+
+        } else {
+            setWarningLabel("No product selected to modify. ", productsWarning);
+        }
     }
 
     //    Show alert that asks yes or cancel
@@ -162,9 +170,13 @@ public class MainFormController implements Initializable {
             alert.setHeaderText("Confirm deletion");
             alert.setContentText("Are you sure you want to delete " + product.getName() + "?");
             if (alert.showAndWait().get() == ButtonType.OK) {
-                Inventory.deleteProduct(product);
-                tableProduct.setItems(Inventory.getAllProducts());
-                System.out.println(Inventory.getAllProducts());
+                if (product.getAllAssociatedParts().size() == 0) {
+                    Inventory.deleteProduct(product);
+                    tableProduct.setItems(Inventory.getAllProducts());
+                    System.out.println(Inventory.getAllProducts());
+                } else {
+                    setWarningLabel("Product has associated parts", productsWarning);
+                }
             } else {
                 setWarningLabel("Not Deleted", productsWarning);
             }

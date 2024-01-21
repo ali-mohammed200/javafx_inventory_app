@@ -167,7 +167,15 @@ public class AddProductController implements Initializable {
         System.out.println("remove");
         Part part = (Part) tableAssocPart.getSelectionModel().getSelectedItem();
         if (part != null) {
-            associatedParts.remove(part);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Remove Associated Part");
+            alert.setHeaderText("Confirm deletion");
+            alert.setContentText("Are you sure you want to delete " + part.getName() + "?");
+            if (alert.showAndWait().get() == ButtonType.OK) {
+                associatedParts.remove(part);
+            } else {
+                setWarningLabel("Not Deleted", assocPartsWarning);
+            }
         } else {
             setWarningLabel("No associated part selected", assocPartsWarning);
         }
