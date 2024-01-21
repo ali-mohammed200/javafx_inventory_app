@@ -1,6 +1,8 @@
 package Controller;
 
-import Model.*;
+import Model.Inventory;
+import Model.Part;
+import Model.Product;
 import com.c482_inventory_system.c482_pa.MainApplication;
 import javafx.animation.Animation;
 import javafx.animation.Transition;

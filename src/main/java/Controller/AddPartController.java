@@ -18,8 +18,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.Random;
+import java.util.ResourceBundle;
 
 public class AddPartController implements Initializable {
     private final ToggleGroup group = new ToggleGroup();
