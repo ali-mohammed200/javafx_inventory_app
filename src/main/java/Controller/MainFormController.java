@@ -83,9 +83,12 @@ public class MainFormController implements Initializable {
     @FXML
     protected void onModifyPart(ActionEvent event) throws IOException {
         Part part = (Part) tablePart.getSelectionModel().getSelectedItem();
+        Integer selectedIndex = tablePart.getSelectionModel().getSelectedIndex();
         if (part != null) {
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/View/modify-part.fxml"));
-            ((ModifyPartController) fxmlLoader.getController()).setSelectedPart(part);
+            ModifyPartController modifyPartController = ((ModifyPartController) fxmlLoader.getController());
+            modifyPartController.setSelectedPart(part);
+            modifyPartController.setPartIndex(selectedIndex);
 
             Scene scene = new Scene(fxmlLoader.load());
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

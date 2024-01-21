@@ -45,7 +45,7 @@ public class AddPartController implements Initializable {
     private TextField minInput;
     @FXML
     private Label warningLabel;
-    private ToggleGroup group = new ToggleGroup();
+    private final ToggleGroup group = new ToggleGroup();
 
 
     @FXML
@@ -98,12 +98,12 @@ public class AddPartController implements Initializable {
             int machineId = 0;
             try {
                 machineId = Integer.parseInt(custom);
-                part = new InHouse(id, name, price, inv, max, min, machineId);
+                part = new InHouse(id, name, price, inv, min, max, machineId);
             } catch (NumberFormatException e) {
                 warning += "Machine ID is not an integer. ";
             }
         } else if (osButton.isSelected()) {
-            part = new Outsourced(id, name, price, inv, max, min, custom);
+            part = new Outsourced(id, name, price, inv, min, max, custom);
         }
 
         if (warning.length() > 0) {

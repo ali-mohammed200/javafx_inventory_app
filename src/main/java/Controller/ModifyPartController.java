@@ -23,18 +23,9 @@ import java.util.ResourceBundle;
 
 public class ModifyPartController implements Initializable {
     private static Part selectedPart;
-
-    public static Part getSelectedPart() {
-        return selectedPart;
-    }
-
-    public static void setSelectedPart(Part sPart) {
-        selectedPart = sPart;
-    }
-
+    private static Integer partIndex = 0;
     @FXML
     private Stage stage;
-
     @FXML
     private RadioButton ihButton;
     @FXML
@@ -55,7 +46,23 @@ public class ModifyPartController implements Initializable {
     private TextField minInput;
     @FXML
     private Label warningLabel;
-    private ToggleGroup group = new ToggleGroup();
+    private final ToggleGroup group = new ToggleGroup();
+
+    public static Part getSelectedPart() {
+        return selectedPart;
+    }
+
+    public static void setSelectedPart(Part sPart) {
+        selectedPart = sPart;
+    }
+
+    public static Integer getPartIndex() {
+        return partIndex;
+    }
+
+    public static void setPartIndex(Integer pIndex) {
+        partIndex = pIndex;
+    }
 
 
     @FXML
@@ -102,24 +109,24 @@ public class ModifyPartController implements Initializable {
 
 
         String custom = customInput.getText();
-        int id = new Random().nextInt(1000);
+        int id = selectedPart.getId();
         Part part = null;
         if (ihButton.isSelected()) {
             int machineId = 0;
             try {
                 machineId = Integer.parseInt(custom);
-                part = new InHouse(id, name, price, inv, max, min, machineId);
+                part = new InHouse(id, name, price, inv, min, max, machineId);
             } catch (NumberFormatException e) {
                 warning += "Machine ID is not an integer. ";
             }
         } else if (osButton.isSelected()) {
-            part = new Outsourced(id, name, price, inv, max, min, custom);
+            part = new Outsourced(id, name, price, inv, min, max, custom);
         }
 
         if (warning.length() > 0) {
             warningLabel.setText("Exception:\n" + warning);
         } else {
-            Inventory.addPart(part);
+            Inventory.updatePart(partIndex, part);
             onCancel(event); //close add parts window
         }
     }
@@ -136,11 +143,28 @@ public class ModifyPartController implements Initializable {
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println(partIndex);
         ihButton.setToggleGroup(group);
         osButton.setToggleGroup(group);
 
         System.out.println(selectedPart);
-        ihButton.setSelected(true);
+
+        nameInput.setText(selectedPart.getName());
+        invInput.setText(Integer.toString(selectedPart.getStock()));
+        priceInput.setText(Double.toString(selectedPart.getPrice()));
+        maxInput.setText(Integer.toString(selectedPart.getMax()));
+        minInput.setText(Integer.toString(selectedPart.getMin()));
+
+        if (selectedPart instanceof Outsourced) {
+            osButton.setSelected(true);
+            customInput.setText(((Outsourced) selectedPart).getCompanyName());
+            customLabel.setText("Company Name");
+        } else if (selectedPart instanceof InHouse) {
+            ihButton.setSelected(true);
+            customInput.setText(Integer.toString(((InHouse) selectedPart).getMachineId()));
+            customLabel.setText("Machine ID");
+        }
+
         group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
