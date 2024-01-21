@@ -9,6 +9,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MainApplication extends Application {
+    public static void main(String[] args) {
+        launch();
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
         loadDummyData();
@@ -19,7 +23,7 @@ public class MainApplication extends Application {
         stage.show();
     }
 
-    public void loadDummyData(){
+    public void loadDummyData() {
         Product pr = new Product(1, "Bike", 10, 2, 1, 5);
         Product pr2 = new Product(2, "Car", 100, 12, 1, 5);
         Part part = new Outsourced(1, "Outsourced Part Tire", 20, 2, 1, 5, "FOX");
@@ -30,9 +34,5 @@ public class MainApplication extends Application {
         Inventory.addPart(part2);
         Inventory.addProduct(pr);
         Inventory.addProduct(pr2);
-    }
-
-    public static void main(String[] args) {
-        launch();
     }
 }

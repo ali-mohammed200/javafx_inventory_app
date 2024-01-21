@@ -23,34 +23,14 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.ResourceBundle;
 
 public class ModifyProductController implements Initializable {
     private static Product selectedProduct;
     private static Integer productIndex = 0;
-
-    public static Product getSelectedProduct() {
-        return selectedProduct;
-    }
-
-    public static void setSelectedProduct(Product selectedProduct) {
-        ModifyProductController.selectedProduct = selectedProduct;
-    }
-
-    public static Integer getProductIndex() {
-        return productIndex;
-    }
-
-    public static void setProductIndex(Integer productIndex) {
-        ModifyProductController.productIndex = productIndex;
-    }
-
     private final ObservableList<Part> tempAssociatedParts = FXCollections.observableList(new ArrayList<Part>(selectedProduct.getAllAssociatedParts()));
     @FXML
     private Stage stage;
-    @FXML
-    private TextField idInput;
     @FXML
     private TextField nameInput;
     @FXML
@@ -72,8 +52,6 @@ public class ModifyProductController implements Initializable {
     @FXML
     private TableColumn cPartPrice;
     @FXML
-    private Button addPartButton;
-    @FXML
     private TextField searchBarPart;
     @FXML
     private TableView tableAssocPart;
@@ -86,17 +64,19 @@ public class ModifyProductController implements Initializable {
     @FXML
     private TableColumn aPartPrice;
     @FXML
-    private Button removeAssocPart;
-    @FXML
-    private Button saveButton;
-    @FXML
-    private Button cancelButton;
-    @FXML
     private Label warningLabel;
     @FXML
     private Label partsWarning;
     @FXML
     private Label assocPartsWarning;
+
+    public static void setSelectedProduct(Product selectedProduct) {
+        ModifyProductController.selectedProduct = selectedProduct;
+    }
+
+    public static void setProductIndex(Integer productIndex) {
+        ModifyProductController.productIndex = productIndex;
+    }
 
     @FXML
     protected void onSearchPart(KeyEvent event) {

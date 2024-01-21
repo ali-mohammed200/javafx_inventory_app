@@ -18,12 +18,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Random;
 import java.util.ResourceBundle;
 
 public class ModifyPartController implements Initializable {
     private static Part selectedPart;
     private static Integer partIndex = 0;
+    private final ToggleGroup group = new ToggleGroup();
     @FXML
     private Stage stage;
     @FXML
@@ -46,18 +46,9 @@ public class ModifyPartController implements Initializable {
     private TextField minInput;
     @FXML
     private Label warningLabel;
-    private final ToggleGroup group = new ToggleGroup();
-
-    public static Part getSelectedPart() {
-        return selectedPart;
-    }
 
     public static void setSelectedPart(Part sPart) {
         selectedPart = sPart;
-    }
-
-    public static Integer getPartIndex() {
-        return partIndex;
     }
 
     public static void setPartIndex(Integer pIndex) {

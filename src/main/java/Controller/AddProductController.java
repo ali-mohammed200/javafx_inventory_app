@@ -29,8 +29,6 @@ public class AddProductController implements Initializable {
     @FXML
     private Stage stage;
     @FXML
-    private TextField idInput;
-    @FXML
     private TextField nameInput;
     @FXML
     private TextField invInput;
@@ -51,8 +49,6 @@ public class AddProductController implements Initializable {
     @FXML
     private TableColumn cPartPrice;
     @FXML
-    private Button addPartButton;
-    @FXML
     private TextField searchBarPart;
     @FXML
     private TableView tableAssocPart;
@@ -64,12 +60,6 @@ public class AddProductController implements Initializable {
     private TableColumn aPartInvLvl;
     @FXML
     private TableColumn aPartPrice;
-    @FXML
-    private Button removeAssocPart;
-    @FXML
-    private Button saveButton;
-    @FXML
-    private Button cancelButton;
     @FXML
     private Label warningLabel;
     @FXML

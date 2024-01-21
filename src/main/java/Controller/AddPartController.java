@@ -22,9 +22,9 @@ import java.util.ResourceBundle;
 import java.util.Random;
 
 public class AddPartController implements Initializable {
+    private final ToggleGroup group = new ToggleGroup();
     @FXML
     private Stage stage;
-
     @FXML
     private RadioButton ihButton;
     @FXML
@@ -45,8 +45,6 @@ public class AddPartController implements Initializable {
     private TextField minInput;
     @FXML
     private Label warningLabel;
-    private final ToggleGroup group = new ToggleGroup();
-
 
     @FXML
     protected void onSave(ActionEvent event) throws IOException {
