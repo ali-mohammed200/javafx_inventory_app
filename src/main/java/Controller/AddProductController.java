@@ -93,8 +93,6 @@ public class AddProductController implements Initializable {
 
     @FXML
     protected void onSave(ActionEvent event) throws IOException {
-        System.out.println("save");
-
         String warning = "";
         String name = nameInput.getText();
         if (name == "") {
@@ -153,7 +151,6 @@ public class AddProductController implements Initializable {
 
     @FXML
     protected void onAddAssociatedPart(ActionEvent event) {
-        System.out.println("add");
         Part part = (Part) tablePart.getSelectionModel().getSelectedItem();
         if (part != null) {
             associatedParts.add(part);
@@ -164,7 +161,6 @@ public class AddProductController implements Initializable {
 
     @FXML
     protected void onRemoveAssociatedPart(ActionEvent event) {
-        System.out.println("remove");
         Part part = (Part) tableAssocPart.getSelectionModel().getSelectedItem();
         if (part != null) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

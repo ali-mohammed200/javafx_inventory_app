@@ -132,7 +132,6 @@ public class MainFormController implements Initializable {
             if (alert.showAndWait().get() == ButtonType.OK) {
                 Inventory.deletePart(part);
                 tablePart.setItems(Inventory.getAllParts());
-                System.out.println(Inventory.getAllProducts());
             } else {
                 setWarningLabel("Not Deleted", partsWarning);
             }
@@ -173,7 +172,6 @@ public class MainFormController implements Initializable {
                 if (product.getAllAssociatedParts().size() == 0) {
                     Inventory.deleteProduct(product);
                     tableProduct.setItems(Inventory.getAllProducts());
-                    System.out.println(Inventory.getAllProducts());
                 } else {
                     setWarningLabel("Product has associated parts", productsWarning);
                 }

@@ -143,11 +143,8 @@ public class ModifyPartController implements Initializable {
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println(partIndex);
         ihButton.setToggleGroup(group);
         osButton.setToggleGroup(group);
-
-        System.out.println(selectedPart);
 
         nameInput.setText(selectedPart.getName());
         invInput.setText(Integer.toString(selectedPart.getStock()));
