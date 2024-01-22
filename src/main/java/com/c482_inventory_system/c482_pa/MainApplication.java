@@ -57,10 +57,10 @@ public class MainApplication extends Application {
      */
     public void loadDummyData() {
         Product pr = new Product(1, "Bike", 10, 2, 1, 5);
-        Product pr2 = new Product(2, "Car", 100, 12, 1, 5);
-        Part part = new Outsourced(1, "Outsourced Part Tire", 20, 2, 1, 5, "FOX");
+        Product pr2 = new Product(2, "Car", 100, 3, 1, 6);
+        Part part = new Outsourced(1, "Tire", 20, 4, 1, 4, "FOX");
         pr.addAssociatedPart(part);
-        Part part2 = new InHouse(2, "InHouse Part Bell", 10, 2, 1, 5, 2);
+        Part part2 = new InHouse(2, "Bell", 10, 1, 1, 8, 2);
         pr.addAssociatedPart(part2);
         Inventory.addPart(part);
         Inventory.addPart(part2);

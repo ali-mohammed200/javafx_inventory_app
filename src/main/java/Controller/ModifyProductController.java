@@ -161,7 +161,6 @@ public class ModifyProductController implements Initializable {
         int id = selectedProduct.getId();
 
         Product product = null;
-//        Creating a new product every time which I should not do. The loop will need to be modified as well
         product = new Product(id, name, price, inv, min, max);
 
         if (warning.length() > 0) {
@@ -207,7 +206,7 @@ public class ModifyProductController implements Initializable {
             if (alert.showAndWait().get() == ButtonType.OK) {
                 tempAssociatedParts.remove(part);
             } else {
-                setWarningLabel("Not Deleted", assocPartsWarning);
+                setWarningLabel("Not removed", assocPartsWarning);
             }
         } else {
             setWarningLabel("No associated part selected", assocPartsWarning);

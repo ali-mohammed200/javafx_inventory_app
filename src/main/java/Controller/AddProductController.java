@@ -186,7 +186,7 @@ public class AddProductController implements Initializable {
             if (alert.showAndWait().get() == ButtonType.OK) {
                 associatedParts.remove(part);
             } else {
-                setWarningLabel("Not Deleted", assocPartsWarning);
+                setWarningLabel("Not removed", assocPartsWarning);
             }
         } else {
             setWarningLabel("No associated part selected", assocPartsWarning);
