@@ -47,15 +47,31 @@ public class ModifyPartController implements Initializable {
     @FXML
     private Label warningLabel;
 
+    /**
+     * set selected part
+     *
+     * @param sPart
+     */
     public static void setSelectedPart(Part sPart) {
         selectedPart = sPart;
     }
 
+    /**
+     * set part index
+     *
+     * @param pIndex
+     */
     public static void setPartIndex(Integer pIndex) {
         partIndex = pIndex;
     }
 
 
+    /**
+     * Event handler for saving a modified part
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     protected void onSave(ActionEvent event) throws IOException {
         String warning = "";
@@ -122,6 +138,12 @@ public class ModifyPartController implements Initializable {
         }
     }
 
+    /**
+     * Event Handler for canceling part modification
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     protected void onCancel(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/View/main-form.fxml"));
@@ -132,6 +154,13 @@ public class ModifyPartController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Overrides the initialize method of the Initializable interface
+     * sets data for the inputs on the screen
+     *
+     * @param url
+     * @param resourceBundle
+     */
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ihButton.setToggleGroup(group);

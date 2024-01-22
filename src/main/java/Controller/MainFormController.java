@@ -23,6 +23,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * This class defines the controller on the main screen
+ */
 public class MainFormController implements Initializable {
     @FXML
     private Stage stage;
@@ -58,6 +61,12 @@ public class MainFormController implements Initializable {
     private Label partsWarning;
 
 
+    /**
+     * Event Handler for adding a part
+     * Loads the add part form
+     * @param event
+     * @throws IOException
+     */
     @FXML
     protected void onAddPart(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/View/add-part.fxml"));
@@ -68,6 +77,12 @@ public class MainFormController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Event Handler for adding a product
+     * Loads the add product form
+     * @param event
+     * @throws IOException
+     */
     @FXML
     protected void onAddProduct(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/View/add-product.fxml"));
@@ -80,6 +95,12 @@ public class MainFormController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Event Handler for modifying a part
+     * Loads the modify part form
+     * @param event
+     * @throws IOException
+     */
     @FXML
     protected void onModifyPart(ActionEvent event) throws IOException {
         Part part = (Part) tablePart.getSelectionModel().getSelectedItem();
@@ -101,6 +122,12 @@ public class MainFormController implements Initializable {
         }
     }
 
+    /**
+     * Event Handler for modifying a product
+     * Loads the modify product form
+     * @param event
+     * @throws IOException
+     */
     @FXML
     protected void onModifyProduct(ActionEvent event) throws IOException {
         Product selectedProduct = (Product) tableProduct.getSelectionModel().getSelectedItem();
@@ -122,7 +149,12 @@ public class MainFormController implements Initializable {
         }
     }
 
-    //    Show alert that asks yes or cancel
+    /**
+     * Event Handler for deleting a part
+     * Loads an alert modal for confirmation
+     * @param event
+     * @throws IOException
+     */
     @FXML
     protected void onDeletePart(ActionEvent event) {
         Part part = (Part) tablePart.getSelectionModel().getSelectedItem();
@@ -142,6 +174,12 @@ public class MainFormController implements Initializable {
         }
     }
 
+    /**
+     * sets a warning animation on a label
+     * fades after 2 seconds
+     * @param warning
+     * @param label
+     */
     @FXML
     protected void setWarningLabel(String warning, Label label) {
         label.setText(warning);
@@ -162,6 +200,12 @@ public class MainFormController implements Initializable {
         animation.play();
     }
 
+    /**
+     * Event Handler for deleting a product
+     * Loads an alert modal for confirmation
+     * @param event
+     * @throws IOException
+     */
     @FXML
     protected void onDeleteProduct(ActionEvent event) {
         Product product = (Product) tableProduct.getSelectionModel().getSelectedItem();
@@ -185,6 +229,12 @@ public class MainFormController implements Initializable {
         }
     }
 
+    /**
+     * Event Handler for searching for a part
+     * Loads an alert modal for confirmation
+     * @param event
+     * @throws IOException
+     */
     @FXML
     protected void onSearchPart(KeyEvent event) {
         String searchTerm = searchBarPart.getText();
@@ -199,6 +249,12 @@ public class MainFormController implements Initializable {
         tablePart.setItems(Inventory.lookupPart(searchTerm));
     }
 
+    /**
+     * Event Handler for searching for a product
+     * Loads an alert modal for confirmation
+     * @param event
+     * @throws IOException
+     */
     @FXML
     protected void onSearchProduct(KeyEvent event) {
         String searchTerm = searchBarProduct.getText();
@@ -214,12 +270,23 @@ public class MainFormController implements Initializable {
     }
 
 
+    /**
+     * Event Handler for exiting the application
+     * @param event
+     * @throws IOException
+     */
     @FXML
     protected void onExitApplication(ActionEvent event) {
         stage = (Stage) mainPane.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * Overrides the initialize method of the Initializable interface
+     * sets data for the tables on the screen
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tablePart.setPlaceholder(new Label("No parts to show"));

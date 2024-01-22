@@ -69,6 +69,11 @@ public class AddProductController implements Initializable {
     @FXML
     private Label assocPartsWarning;
 
+    /**
+     * search for a part in the inventory
+     *
+     * @param event
+     */
     @FXML
     protected void onSearchPart(KeyEvent event) {
         String searchTerm = searchBarPart.getText();
@@ -83,6 +88,12 @@ public class AddProductController implements Initializable {
         tablePart.setItems(Inventory.lookupPart(searchTerm));
     }
 
+    /**
+     * Event handler for saving a modified product
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     protected void onSave(ActionEvent event) throws IOException {
         String warning = "";
@@ -141,6 +152,11 @@ public class AddProductController implements Initializable {
         }
     }
 
+    /**
+     * Event Handler for adding an associated part
+     *
+     * @param event
+     */
     @FXML
     protected void onAddAssociatedPart(ActionEvent event) {
         Part part = (Part) tablePart.getSelectionModel().getSelectedItem();
@@ -151,6 +167,11 @@ public class AddProductController implements Initializable {
         }
     }
 
+    /**
+     * Event Handler for removing an associated part
+     *
+     * @param event
+     */
     @FXML
     protected void onRemoveAssociatedPart(ActionEvent event) {
         Part part = (Part) tableAssocPart.getSelectionModel().getSelectedItem();
@@ -169,6 +190,13 @@ public class AddProductController implements Initializable {
         }
     }
 
+    /**
+     * sets a warning animation on a label
+     * fades after 2 seconds
+     *
+     * @param warning
+     * @param label
+     */
     @FXML
     protected void setWarningLabel(String warning, Label label) {
         label.setText(warning);
@@ -189,6 +217,12 @@ public class AddProductController implements Initializable {
         animation.play();
     }
 
+    /**
+     * Event Handler for canceling product modification
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     protected void onCancel(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/View/main-form.fxml"));
@@ -199,6 +233,13 @@ public class AddProductController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Overrides the initialize method of the Initializable interface
+     * sets data for the tables on the screen
+     *
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tablePart.setPlaceholder(new Label("No parts to show"));

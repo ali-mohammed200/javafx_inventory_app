@@ -21,6 +21,17 @@ import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+/**
+ * RUNTIME ERROR:
+ * - NumberFormatException
+ * - - Occurred in the AddPartController onSave Function
+ * - - Reason:
+ * - - - String inputs were not convertable to numeric formats
+ * - - - and the exception was thrown
+ * - - Solution:
+ * - - - Encompass the logic within Try Catch and inform the user
+ * - - - of the incorrect data type
+ */
 public class AddPartController implements Initializable {
     private final ToggleGroup group = new ToggleGroup();
     @FXML
@@ -46,6 +57,14 @@ public class AddPartController implements Initializable {
     @FXML
     private Label warningLabel;
 
+    /**
+     * Event handler for saving a new part
+     * RUNTIME ERROR:
+     *  * - NumberFormatException
+     *  * - Details are listed above
+     * @param event
+     * @throws IOException
+     */
     @FXML
     protected void onSave(ActionEvent event) throws IOException {
         String warning = "";
@@ -112,6 +131,12 @@ public class AddPartController implements Initializable {
         }
     }
 
+    /**
+     * Event Handler for canceling part creation
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     protected void onCancel(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/View/main-form.fxml"));
@@ -122,6 +147,13 @@ public class AddPartController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Overrides the initialize method of the Initializable interface
+     * sets groups the toggles and set data on the screen
+     *
+     * @param url
+     * @param resourceBundle
+     */
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ihButton.setToggleGroup(group);
