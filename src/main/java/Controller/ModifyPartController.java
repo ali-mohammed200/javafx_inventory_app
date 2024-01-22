@@ -20,6 +20,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * ModifyPartController Class
+ */
 public class ModifyPartController implements Initializable {
     private static Part selectedPart;
     private static Integer partIndex = 0;
@@ -50,7 +53,7 @@ public class ModifyPartController implements Initializable {
     /**
      * set selected part
      *
-     * @param sPart
+     * @param sPart sPart
      */
     public static void setSelectedPart(Part sPart) {
         selectedPart = sPart;
@@ -59,7 +62,7 @@ public class ModifyPartController implements Initializable {
     /**
      * set part index
      *
-     * @param pIndex
+     * @param pIndex pIndex
      */
     public static void setPartIndex(Integer pIndex) {
         partIndex = pIndex;
@@ -69,8 +72,8 @@ public class ModifyPartController implements Initializable {
     /**
      * Event handler for saving a modified part
      *
-     * @param event
-     * @throws IOException
+     * @param event event
+     * @throws IOException IOException
      */
     @FXML
     protected void onSave(ActionEvent event) throws IOException {
@@ -141,8 +144,8 @@ public class ModifyPartController implements Initializable {
     /**
      * Event Handler for canceling part modification
      *
-     * @param event
-     * @throws IOException
+     * @param event event
+     * @throws IOException IOException
      */
     @FXML
     protected void onCancel(ActionEvent event) throws IOException {
@@ -158,8 +161,8 @@ public class ModifyPartController implements Initializable {
      * Overrides the initialize method of the Initializable interface
      * sets data for the inputs on the screen
      *
-     * @param url
-     * @param resourceBundle
+     * @param url            url
+     * @param resourceBundle resourceBundle
      */
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {

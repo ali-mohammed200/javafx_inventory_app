@@ -64,8 +64,9 @@ public class MainFormController implements Initializable {
     /**
      * Event Handler for adding a part
      * Loads the add part form
-     * @param event
-     * @throws IOException
+     *
+     * @param event event
+     * @throws IOException IOException
      */
     @FXML
     protected void onAddPart(ActionEvent event) throws IOException {
@@ -80,8 +81,9 @@ public class MainFormController implements Initializable {
     /**
      * Event Handler for adding a product
      * Loads the add product form
-     * @param event
-     * @throws IOException
+     *
+     * @param event event
+     * @throws IOException IOException
      */
     @FXML
     protected void onAddProduct(ActionEvent event) throws IOException {
@@ -98,8 +100,9 @@ public class MainFormController implements Initializable {
     /**
      * Event Handler for modifying a part
      * Loads the modify part form
-     * @param event
-     * @throws IOException
+     *
+     * @param event event
+     * @throws IOException IOException
      */
     @FXML
     protected void onModifyPart(ActionEvent event) throws IOException {
@@ -125,8 +128,9 @@ public class MainFormController implements Initializable {
     /**
      * Event Handler for modifying a product
      * Loads the modify product form
-     * @param event
-     * @throws IOException
+     *
+     * @param event event
+     * @throws IOException IOException
      */
     @FXML
     protected void onModifyProduct(ActionEvent event) throws IOException {
@@ -152,8 +156,8 @@ public class MainFormController implements Initializable {
     /**
      * Event Handler for deleting a part
      * Loads an alert modal for confirmation
-     * @param event
-     * @throws IOException
+     *
+     * @param event event
      */
     @FXML
     protected void onDeletePart(ActionEvent event) {
@@ -177,8 +181,9 @@ public class MainFormController implements Initializable {
     /**
      * sets a warning animation on a label
      * fades after 2 seconds
-     * @param warning
-     * @param label
+     *
+     * @param warning warning
+     * @param label   label
      */
     @FXML
     protected void setWarningLabel(String warning, Label label) {
@@ -203,8 +208,8 @@ public class MainFormController implements Initializable {
     /**
      * Event Handler for deleting a product
      * Loads an alert modal for confirmation
-     * @param event
-     * @throws IOException
+     *
+     * @param event event
      */
     @FXML
     protected void onDeleteProduct(ActionEvent event) {
@@ -232,8 +237,8 @@ public class MainFormController implements Initializable {
     /**
      * Event Handler for searching for a part
      * Loads an alert modal for confirmation
-     * @param event
-     * @throws IOException
+     *
+     * @param event event
      */
     @FXML
     protected void onSearchPart(KeyEvent event) {
@@ -252,8 +257,8 @@ public class MainFormController implements Initializable {
     /**
      * Event Handler for searching for a product
      * Loads an alert modal for confirmation
-     * @param event
-     * @throws IOException
+     *
+     * @param event event
      */
     @FXML
     protected void onSearchProduct(KeyEvent event) {
@@ -272,8 +277,8 @@ public class MainFormController implements Initializable {
 
     /**
      * Event Handler for exiting the application
-     * @param event
-     * @throws IOException
+     *
+     * @param event event
      */
     @FXML
     protected void onExitApplication(ActionEvent event) {
@@ -284,8 +289,9 @@ public class MainFormController implements Initializable {
     /**
      * Overrides the initialize method of the Initializable interface
      * sets data for the tables on the screen
-     * @param url
-     * @param resourceBundle
+     *
+     * @param url            url
+     * @param resourceBundle resourceBundle
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

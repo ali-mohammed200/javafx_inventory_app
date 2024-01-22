@@ -16,6 +16,7 @@ public class Product {
 
     /**
      * Constructor for Product
+     * Params for the constructor
      *
      * @param id
      * @param name

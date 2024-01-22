@@ -25,6 +25,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * ModifyProductController Class
+ */
 public class ModifyProductController implements Initializable {
     private static Product selectedProduct;
     private static Integer productIndex = 0;
@@ -73,7 +76,7 @@ public class ModifyProductController implements Initializable {
     /**
      * set selected product
      *
-     * @param selectedProduct
+     * @param selectedProduct selectedProduct
      */
     public static void setSelectedProduct(Product selectedProduct) {
         ModifyProductController.selectedProduct = selectedProduct;
@@ -82,7 +85,7 @@ public class ModifyProductController implements Initializable {
     /**
      * set product index
      *
-     * @param productIndex
+     * @param productIndex productIndex
      */
     public static void setProductIndex(Integer productIndex) {
         ModifyProductController.productIndex = productIndex;
@@ -91,7 +94,7 @@ public class ModifyProductController implements Initializable {
     /**
      * search for a part in the inventory
      *
-     * @param event
+     * @param event event
      */
     @FXML
     protected void onSearchPart(KeyEvent event) {
@@ -110,8 +113,8 @@ public class ModifyProductController implements Initializable {
     /**
      * Event handler for saving a modified product
      *
-     * @param event
-     * @throws IOException
+     * @param event event
+     * @throws IOException IOException
      */
     @FXML
     protected void onSave(ActionEvent event) throws IOException {
@@ -175,7 +178,7 @@ public class ModifyProductController implements Initializable {
     /**
      * Event Handler for adding an associated part
      *
-     * @param event
+     * @param event event
      */
     @FXML
     protected void onAddAssociatedPart(ActionEvent event) {
@@ -190,7 +193,7 @@ public class ModifyProductController implements Initializable {
     /**
      * Event Handler for removing an associated part
      *
-     * @param event
+     * @param event event
      */
     @FXML
     protected void onRemoveAssociatedPart(ActionEvent event) {
@@ -215,8 +218,8 @@ public class ModifyProductController implements Initializable {
      * sets a warning animation on a label
      * fades after 2 seconds
      *
-     * @param warning
-     * @param label
+     * @param warning warning
+     * @param label   label
      */
     @FXML
     protected void setWarningLabel(String warning, Label label) {
@@ -241,8 +244,8 @@ public class ModifyProductController implements Initializable {
     /**
      * Event Handler for canceling product modification
      *
-     * @param event
-     * @throws IOException
+     * @param event event
+     * @throws IOException IOException
      */
     @FXML
     protected void onCancel(ActionEvent event) throws IOException {
@@ -258,8 +261,8 @@ public class ModifyProductController implements Initializable {
      * Overrides the initialize method of the Initializable interface
      * sets data for the tables and inputs on the screen
      *
-     * @param url
-     * @param resourceBundle
+     * @param url            url
+     * @param resourceBundle resourceBundle
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

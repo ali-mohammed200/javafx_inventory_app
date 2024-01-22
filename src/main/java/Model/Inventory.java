@@ -5,6 +5,9 @@ import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 
+/**
+ * Inventory Class
+ */
 public class Inventory {
     private static final ObservableList<Part> allParts = FXCollections.observableList(new ArrayList<Part>());
 
@@ -13,7 +16,7 @@ public class Inventory {
     /**
      * add a part to the inventory
      *
-     * @param newPart
+     * @param newPart newPart
      */
     public static void addPart(Part newPart) {
         allParts.add(newPart);
@@ -22,7 +25,7 @@ public class Inventory {
     /**
      * add a product to the inventory
      *
-     * @param newProduct
+     * @param newProduct newProduct
      */
     public static void addProduct(Product newProduct) {
         allProducts.add(newProduct);
@@ -31,7 +34,7 @@ public class Inventory {
     /**
      * search for a part
      *
-     * @param partId
+     * @param partId partId
      * @return part
      */
     public static Part lookupPart(int partId) {
@@ -46,7 +49,7 @@ public class Inventory {
     /**
      * search for a part
      *
-     * @param partName
+     * @param partName partName
      * @return list of parts
      */
     public static ObservableList<Part> lookupPart(String partName) {
@@ -63,7 +66,7 @@ public class Inventory {
     /**
      * search for a product
      *
-     * @param productId
+     * @param productId productId
      * @return product
      */
     public static Product lookupProduct(int productId) {
@@ -78,7 +81,7 @@ public class Inventory {
     /**
      * search for a product
      *
-     * @param productName
+     * @param productName productName
      * @return list of products
      */
     public static ObservableList<Product> lookupProduct(String productName) {
@@ -95,8 +98,8 @@ public class Inventory {
     /**
      * update a part
      *
-     * @param index
-     * @param selectedPart
+     * @param index        index
+     * @param selectedPart selectedPart
      */
     public static void updatePart(int index, Part selectedPart) {
         allParts.set(index, selectedPart);
@@ -105,8 +108,8 @@ public class Inventory {
     /**
      * update a product
      *
-     * @param index
-     * @param selectedProduct
+     * @param index           index
+     * @param selectedProduct selectedProduct
      */
     public static void updateProduct(int index, Product selectedProduct) {
         allProducts.set(index, selectedProduct);
@@ -115,7 +118,7 @@ public class Inventory {
     /**
      * delete desired part
      *
-     * @param selectedPart
+     * @param selectedPart selectedPart
      * @return boolean if part deleted
      */
     public static boolean deletePart(Part selectedPart) {
@@ -125,8 +128,8 @@ public class Inventory {
     /**
      * delete desired product
      *
-     * @param selectedProduct
-     * @return
+     * @param selectedProduct selectedProduct
+     * @return boolean if deleted
      */
     public static boolean deleteProduct(Product selectedProduct) {
         return allProducts.remove(selectedProduct);

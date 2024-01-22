@@ -26,6 +26,9 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+/**
+ * AddProductController Class
+ */
 public class AddProductController implements Initializable {
     private final ObservableList<Part> associatedParts = FXCollections.observableList(new ArrayList<Part>());
     @FXML
@@ -72,7 +75,7 @@ public class AddProductController implements Initializable {
     /**
      * search for a part in the inventory
      *
-     * @param event
+     * @param event event
      */
     @FXML
     protected void onSearchPart(KeyEvent event) {
@@ -91,8 +94,8 @@ public class AddProductController implements Initializable {
     /**
      * Event handler for saving a modified product
      *
-     * @param event
-     * @throws IOException
+     * @param event event
+     * @throws IOException IOException
      */
     @FXML
     protected void onSave(ActionEvent event) throws IOException {
@@ -155,7 +158,7 @@ public class AddProductController implements Initializable {
     /**
      * Event Handler for adding an associated part
      *
-     * @param event
+     * @param event event
      */
     @FXML
     protected void onAddAssociatedPart(ActionEvent event) {
@@ -170,7 +173,7 @@ public class AddProductController implements Initializable {
     /**
      * Event Handler for removing an associated part
      *
-     * @param event
+     * @param event event
      */
     @FXML
     protected void onRemoveAssociatedPart(ActionEvent event) {
@@ -194,8 +197,8 @@ public class AddProductController implements Initializable {
      * sets a warning animation on a label
      * fades after 2 seconds
      *
-     * @param warning
-     * @param label
+     * @param warning warning
+     * @param label   label
      */
     @FXML
     protected void setWarningLabel(String warning, Label label) {
@@ -220,8 +223,8 @@ public class AddProductController implements Initializable {
     /**
      * Event Handler for canceling product modification
      *
-     * @param event
-     * @throws IOException
+     * @param event event
+     * @throws IOException IOException
      */
     @FXML
     protected void onCancel(ActionEvent event) throws IOException {
@@ -237,8 +240,8 @@ public class AddProductController implements Initializable {
      * Overrides the initialize method of the Initializable interface
      * sets data for the tables on the screen
      *
-     * @param url
-     * @param resourceBundle
+     * @param url            url
+     * @param resourceBundle resourceBundle
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

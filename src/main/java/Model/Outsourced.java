@@ -1,18 +1,22 @@
 package Model;
 
+/**
+ * Outsourced Part Class
+ */
 public class Outsourced extends Part {
     private String companyName;
 
     /**
      * Constructor of Outsourced Part
+     * params for constructor
      *
-     * @param id
-     * @param name
-     * @param price
-     * @param stock
-     * @param min
-     * @param max
-     * @param companyName
+     * @param id          id param
+     * @param name        name param
+     * @param price       price param
+     * @param stock       stock param
+     * @param min         min param
+     * @param max         max param
+     * @param companyName companyName param
      */
     public Outsourced(int id, String name, double price, int stock, int min, int max, String companyName) {
         super(id, name, price, stock, min, max);
@@ -29,7 +33,7 @@ public class Outsourced extends Part {
     /**
      * set company name
      *
-     * @param companyName
+     * @param companyName param companyName
      */
     public void setCompanyName(String companyName) {
         this.companyName = companyName;

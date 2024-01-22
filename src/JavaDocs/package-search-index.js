@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"com.c482_inventory_system.c482_pa","l":"com.c482_inventory_system.c482_pa"},{"m":"com.c482_inventory_system.c482_pa","l":"Controller"},{"m":"com.c482_inventory_system.c482_pa","l":"Model"}];updateSearchResults();

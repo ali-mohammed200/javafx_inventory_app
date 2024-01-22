@@ -30,7 +30,7 @@ public class MainApplication extends Application {
     /**
      * main function - entry point of the application
      *
-     * @param args
+     * @param args args
      */
     public static void main(String[] args) {
         launch();
@@ -39,8 +39,8 @@ public class MainApplication extends Application {
     /**
      * Starts the application
      *
-     * @param stage
-     * @throws IOException
+     * @param stage stage
+     * @throws IOException IOException
      */
     @Override
     public void start(Stage stage) throws IOException {

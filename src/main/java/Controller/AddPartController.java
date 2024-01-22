@@ -60,10 +60,11 @@ public class AddPartController implements Initializable {
     /**
      * Event handler for saving a new part
      * RUNTIME ERROR:
-     *  * - NumberFormatException
-     *  * - Details are listed above
-     * @param event
-     * @throws IOException
+     * * - NumberFormatException
+     * * - Details are listed above
+     *
+     * @param event event
+     * @throws IOException IOException
      */
     @FXML
     protected void onSave(ActionEvent event) throws IOException {
@@ -134,8 +135,8 @@ public class AddPartController implements Initializable {
     /**
      * Event Handler for canceling part creation
      *
-     * @param event
-     * @throws IOException
+     * @param event event
+     * @throws IOException IOException
      */
     @FXML
     protected void onCancel(ActionEvent event) throws IOException {
@@ -151,8 +152,8 @@ public class AddPartController implements Initializable {
      * Overrides the initialize method of the Initializable interface
      * sets groups the toggles and set data on the screen
      *
-     * @param url
-     * @param resourceBundle
+     * @param url            url
+     * @param resourceBundle resourceBundle
      */
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
