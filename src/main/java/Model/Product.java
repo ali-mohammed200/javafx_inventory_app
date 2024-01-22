@@ -5,6 +5,9 @@ import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 
+/**
+ * Product Class
+ */
 public class Product {
     private final ObservableList<Part> associatedParts = FXCollections.observableList(new ArrayList<Part>());
     private int id;
@@ -18,12 +21,12 @@ public class Product {
      * Constructor for Product
      * Params for the constructor
      *
-     * @param id
-     * @param name
-     * @param price
-     * @param stock
-     * @param min
-     * @param max
+     * @param id id
+     * @param name name
+     * @param price price
+     * @param stock stock
+     * @param min min
+     * @param max max
      */
     public Product(int id, String name, double price, int stock, int min, int max) {
         this.id = id;
@@ -44,7 +47,7 @@ public class Product {
     /**
      * set id
      *
-     * @param id
+     * @param id id
      */
     public void setId(int id) {
         this.id = id;
@@ -60,7 +63,7 @@ public class Product {
     /**
      * set name
      *
-     * @param name
+     * @param name name
      */
     public void setName(String name) {
         this.name = name;
@@ -76,7 +79,7 @@ public class Product {
     /**
      * set price
      *
-     * @param price
+     * @param price price
      */
     public void setPrice(double price) {
         this.price = price;
@@ -92,7 +95,7 @@ public class Product {
     /**
      * set stock
      *
-     * @param stock
+     * @param stock stock
      */
     public void setStock(int stock) {
         this.stock = stock;
@@ -108,7 +111,7 @@ public class Product {
     /**
      * set min
      *
-     * @param min
+     * @param min min
      */
     public void setMin(int min) {
         this.min = min;
@@ -124,7 +127,7 @@ public class Product {
     /**
      * set max
      *
-     * @param max
+     * @param max max
      */
     public void setMax(int max) {
         this.max = max;
@@ -133,7 +136,7 @@ public class Product {
     /**
      * set associated parts
      *
-     * @param part
+     * @param part part
      */
     public void addAssociatedPart(Part part) {
         associatedParts.add(part);
@@ -142,7 +145,7 @@ public class Product {
     /**
      * delete associated part
      *
-     * @param selectedAssociatedPart
+     * @param selectedAssociatedPart selectedAssociatedPart
      * @return boolean if deleted?
      */
     public boolean deleteAssociatedPart(Part selectedAssociatedPart) {

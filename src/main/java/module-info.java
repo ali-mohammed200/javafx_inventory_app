@@ -1,3 +1,6 @@
+/**
+ * module
+ */
 module com.c482_inventory_system.c482_pa {
     requires javafx.controls;
     requires javafx.fxml;
